@@ -1,9 +1,7 @@
+import { NavigationRoutes } from "./routes";
+
 const App = () => {
-  return (
-    <div className="App">
-      <h1>Quiz</h1>
-    </div>
-  );
+  return <NavigationRoutes />;
 };
 
 export default App;
