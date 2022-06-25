@@ -1,6 +1,12 @@
 import { Button, QuizBubble } from "../../components";
+import { useQuiz } from "../../hooks";
 
 const Home = () => {
+  const {
+    quizState: { allQuizzes, isLoading },
+    startQuiz,
+  } = useQuiz();
+
   return (
     <div
       style={{
@@ -12,8 +18,17 @@ const Home = () => {
       <div className="w-48">
         <img className="w-full" src="/Horizontal-Logo---Full-Colour-3x.png" alt="upraised logo" />
       </div>
-      <QuizBubble>Quiz</QuizBubble>
-      <Button>Start</Button>
+
+      {allQuizzes.map(({ id, quizName }) => (
+        <div className="h-[80vh] flex flex-col items-center justify-between" key={id}>
+          <QuizBubble>{quizName}</QuizBubble>
+          {isLoading ? (
+            <Button>Getting Ready...</Button>
+          ) : (
+            <Button onClickHandler={() => startQuiz(id)}>Start</Button>
+          )}
+        </div>
+      ))}
     </div>
   );
 };
