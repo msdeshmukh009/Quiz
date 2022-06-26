@@ -30,13 +30,13 @@ const ProgressRing = ({ currentQuestionNumber, totalNumberOfQuestion }) => {
         cy="50%"
         r="30"
       ></circle>
-      <text fill="#171717" font-size="36" x="29" y="45">
+      <text fill="#171717" fontSize="36" x="29" y="45">
         {currentQuestionNumber}
       </text>
-      <text fill="lightgray" font-size="16" x="46" y="50">
+      <text fill="lightgray" fontSize="16" x="46" y="50">
         /
       </text>
-      <text fill="lightgray" font-size="16" x="50" y="54">
+      <text fill="lightgray" fontSize="16" x="50" y="54">
         {totalNumberOfQuestion}
       </text>
       <circle cx="50%" cy="50%" r="30" style={styleRing()}></circle>
