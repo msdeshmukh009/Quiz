@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import ReactSpeedometer from "react-d3-speedometer";
 import * as d3 from "d3";
 import { Button, ResultBox } from "../../components";
@@ -8,6 +10,13 @@ const ResultPage = () => {
     quizState: { responses },
     startAgain,
   } = useQuiz();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!responses.length) {
+      navigate("/");
+    }
+  }, []);
 
   const result = responses.reduce(
     (finalResult, response) => {
