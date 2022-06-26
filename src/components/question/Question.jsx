@@ -3,8 +3,15 @@ import { useState } from "react";
 import { useQuiz, useTimer } from "../../hooks";
 import { Button } from "../button/Button";
 import { Option } from "../option/Option";
+import { ProgressRing } from "../progress-ring/ProgressRing";
 
-const Question = ({ question, setCurrentQuestionIndex, isLastQuestion }) => {
+const Question = ({
+  question,
+  setCurrentQuestionIndex,
+  isLastQuestion,
+  currentQuestionIndex,
+  totalNumberOfQuestion,
+}) => {
   const { que, options } = question;
 
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -35,8 +42,15 @@ const Question = ({ question, setCurrentQuestionIndex, isLastQuestion }) => {
   };
 
   return (
-    <div className="bg-[#FFFFFF] rounded-xl h-4/5 sm:h-auto p-4 md:w-[65ch] w-full">
-      <div>
+    <div className="bg-[#FFFFFF] rounded-xl h-4/5 sm:h-auto p-4 md:w-[65ch] w-full relative">
+      <div className="mt-[-50px] flex justify-center">
+        <ProgressRing
+          currentQuestionNumber={currentQuestionIndex + 1}
+          totalNumberOfQuestion={totalNumberOfQuestion}
+        />
+      </div>
+
+      <div className="mt-10">
         <h1 className="font-semibold text-xl">{que}</h1>
       </div>
 

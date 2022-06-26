@@ -14,6 +14,8 @@ const QuestionPage = () => {
         setCurrentQuestionIndex={setCurrentQuestionIndex}
         question={questions[currentQuestionIndex]}
         isLastQuestion={questions.length - 1 === currentQuestionIndex ? true : false}
+        currentQuestionIndex={currentQuestionIndex}
+        totalNumberOfQuestion={questions.length}
       />
     </main>
   );
