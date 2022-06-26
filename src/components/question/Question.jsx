@@ -35,7 +35,7 @@ const Question = ({
     if (!question) {
       navigate("/");
     }
-  }, []);
+  }, [navigate, question]);
 
   const handleOptions = currentOption => {
     if (selectedOptions.find(option => option.opt === currentOption.opt)) {
@@ -74,7 +74,7 @@ const Question = ({
 
       {questionImage ? (
         <div>
-          <img className="w-full max-h-72 my-2" src={questionImage} alt="question-image" />
+          <img className="w-full max-h-72 my-2" src={questionImage} alt={que} />
         </div>
       ) : null}
 
