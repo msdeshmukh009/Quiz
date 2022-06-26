@@ -7,7 +7,7 @@ const useQuiz = () => {
   const { quizState, quizDispatch } = useContext(QuizContext);
   const navigate = useNavigate();
 
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_URL = "https://62b545ba530b26da4ccbcf88.mockapi.io";
 
   const startQuiz = async quizId => {
     try {
@@ -17,10 +17,7 @@ const useQuiz = () => {
       if (status === 200) {
         quizDispatch({ type: "SET_QUESTIONS", payload: data.questions });
 
-        const { status, data: sessionData } = await axios.post(
-          `${process.env.REACT_APP_API_URL}/responses`,
-          {}
-        );
+        const { status, data: sessionData } = await axios.post(`${API_URL}/responses`, {});
 
         if (status === 201) {
           quizDispatch({
@@ -38,15 +35,9 @@ const useQuiz = () => {
 
   const updateResponses = async ({ que, selectedOptions, timeTaken }) => {
     try {
-      const { status, data } = await axios.put(
-        `${process.env.REACT_APP_API_URL}/responses/${quizState.sessionId}`,
-        {
-          responses: [
-            ...quizState.responses,
-            { que, selectedOptions, timeTaken: timeTaken.current },
-          ],
-        }
-      );
+      const { status, data } = await axios.put(`${API_URL}/responses/${quizState.sessionId}`, {
+        responses: [...quizState.responses, { que, selectedOptions, timeTaken: timeTaken.current }],
+      });
 
       if (status === 200) {
         quizDispatch({ type: "SET_RESPONSES", payload: data.responses });
@@ -58,10 +49,7 @@ const useQuiz = () => {
 
   const startAgain = async () => {
     try {
-      const { status, data: sessionData } = await axios.post(
-        `${process.env.REACT_APP_API_URL}/responses`,
-        {}
-      );
+      const { status, data: sessionData } = await axios.post(`${API_URL}/responses`, {});
 
       if (status === 201) {
         quizDispatch({

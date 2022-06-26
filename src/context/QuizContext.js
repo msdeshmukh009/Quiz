@@ -6,7 +6,7 @@ const QuizContext = createContext();
 
 const QuizProvider = ({ children }) => {
   const [quizState, quizDispatch] = useReducer(QuizReducer, quizInitialState);
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_URL = "https://62b545ba530b26da4ccbcf88.mockapi.io";
 
   useEffect(() => {
     (async () => {
