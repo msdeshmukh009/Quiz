@@ -16,7 +16,7 @@ const ResultPage = () => {
     if (!responses.length) {
       navigate("/");
     }
-  }, []);
+  }, [responses.length, navigate]);
 
   const result = responses.reduce(
     (finalResult, response) => {
